@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000";
+const API_URL = "http://localhost:3001";
 
 export const register = (userData) => {
   return axios.post(`${API_URL}/signup`, userData, {
@@ -18,6 +18,16 @@ export const logOutUser = () => {
 
 export const updateProfile = (updates) => {
   return axios.patch(`${API_URL}/user`, updates, {
+    withCredentials: true,
+  });
+};
+// New functions for quiz app
+export const getQuizQuestions = () => {
+  return axios.get(`${API_URL}/quiz/questions`, { withCredentials: true });
+};
+
+export const submitQuizAnswers = (answers) => {
+  return axios.post(`${API_URL}/quiz/submit`, answers, {
     withCredentials: true,
   });
 };
