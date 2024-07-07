@@ -4,6 +4,8 @@ import Register from "./pages/register";
 import Login from "./pages/login";
 import UpdateProfile from "./pages/update-profile";
 import Maincomponent from "./pages/maincomponent"; // Import the Quiz component
+import Results from "./pages/results"; 
+
 
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
       <Route path="/" element={<Login />} />
       <Route path="/updateprofile" element={<UpdateProfile />} />
       <Route path="/home" element={<Maincomponent />} /> {/* Add the Quiz route */}
+      <Route path="/results" element={<Results />} />
     </Routes>
   );
 }
