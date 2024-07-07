@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3001";
+const API_URL = "https://quiz-app-backend-tuwg.onrender.com";
 axios.defaults.withCredentials = true;
 
 export const register = (userData) => {
