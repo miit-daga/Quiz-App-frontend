@@ -71,7 +71,7 @@ export default function Quiz() {
         setLoading(true);
         
         try {
-            const response = await submitQuizAnswers({ userId, answers });
+            const response = await submitQuizAnswers(answers);
             
             if (response.status === 200) {
                 toast({

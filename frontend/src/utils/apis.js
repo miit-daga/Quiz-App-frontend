@@ -8,11 +8,11 @@ export const register = (userData) => {
 };
 
 export const login = (loginData) => {
-  return axios.post(`${API_URL}/login`, loginData, { withCredentials: true });
+  return axios.post(`${API_URL}/login`, loginData);
 };
 
 export const logOutUser = () => {
-  return axios.get(`${API_URL}/logout`, { withCredentials: true });
+  return axios.get(`${API_URL}/logout`);
 };
 
 export const updateProfile = (updates) => {
@@ -20,7 +20,7 @@ export const updateProfile = (updates) => {
 };
 // New functions for quiz app
 export const getQuizQuestions = () => {
-  return axios.get(`${API_URL}/quiz/questions`, { withCredentials: true });
+  return axios.get(`${API_URL}/quiz/questions`);
 };
 
 export const submitQuizAnswers = (answers) => {

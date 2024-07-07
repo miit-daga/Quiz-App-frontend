@@ -1,33 +1,60 @@
-import React from "react";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import { Button, Center, Text } from "@chakra-ui/react";
-import Navbar from "../components/navbar";
-import useAuthStore from "../authStore";
+import { Center, Text, Heading, Button, VStack } from '@chakra-ui/react';
+import Navbar from '../components/navbar';
 
 const Results = () => {
+    const [loading, setLoading] = useState(true);
+    const [score, setScore] = useState(0);
     const navigate = useNavigate();
-    const { quizScore, totalQuestions } = useAuthStore((state) => ({
-        quizScore: state.quizScore,
-        totalQuestions: state.totalQuestions,
-    }));
+
+    useEffect(() => {
+        const fetchQuizScore = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3001/quiz/score`, {
+                    withCredentials: true,
+                });
+                setScore(response.data.score);
+            } catch (error) {
+                console.error('Failed to fetch quiz score:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchQuizScore();
+    }, []);
 
     const handleReturnHome = () => {
         navigate("/home");
     };
 
+    if (loading) {
+        return (
+            <>
+                <Navbar />
+                <Center mt="4">
+                    <Text fontSize="xl">Loading...</Text>
+                </Center>
+            </>
+        );
+    }
+
     return (
         <>
             <Navbar />
-            <Center mt="6rem">
-                <Text fontSize="2xl" fontWeight="bold" mb="2rem">
+            <Center mt="4">
+                <Heading as="h1" size="xl" mb="4">
                     Quiz Results
-                </Text>
-                <Text mb="1rem">
-                    You scored {quizScore} out of {totalQuestions}.
-                </Text>
+                </Heading>
+            </Center>
+            <Center mt="2">
+                <Text fontSize="2xl">You scored {score} out of 10</Text>
+            </Center>
+            <Center mt="4">
                 <Button
                     onClick={handleReturnHome}
-                    mt="1rem"
                     colorScheme="blue"
                     variant="solid"
                     size="md"
