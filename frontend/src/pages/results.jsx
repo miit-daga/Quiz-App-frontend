@@ -12,7 +12,7 @@ const Results = () => {
     useEffect(() => {
         const fetchQuizScore = async () => {
             try {
-                const response = await axios.get(`https://quiz-app-backend-tuwg.onrender.com/quiz/score`, {
+                const response = await axios.get(`https://quiz-app-backend-lr5s.onrender.com/quiz/score`, {
                     withCredentials: true,
                 });
                 setScore(response.data.score);
