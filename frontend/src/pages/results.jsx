@@ -50,7 +50,7 @@ const Results = () => {
                 </Heading>
             </Center>
             <Center mt="2">
-                <Text fontSize="2xl">You scored {score} out of 10</Text>
+                <Text fontSize="2xl">You scored {score}</Text>
             </Center>
             <Center mt="4">
                 <Button
