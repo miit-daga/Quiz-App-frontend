@@ -114,6 +114,14 @@ function Navbar() {
                   Home
                 </MenuItem>
               )}
+              {isAuth && location.pathname !== "/add-question" && (
+                <MenuItem
+                  onClick={() => navigate("/add-question")}
+                  fontSize="1.2rem"
+                >
+                  Add Question
+                </MenuItem>
+              )}
               {isAuth && (
                 <MenuItem
                   onClick={logout}
@@ -180,6 +188,19 @@ function Navbar() {
               _hover={{ bg: "#2732b8" }}
             >
               Home
+            </Button>
+          )}
+          {isAuth && location.pathname !== "/add-question" && (
+            <Button
+              onClick={() => navigate("/add-question")}
+              letterSpacing={1}
+              fontSize="1.2rem"
+              bg="#4250f5"
+              color="white"
+              mr="20px"
+              _hover={{ bg: "#2732b8" }}
+            >
+              Add Question
             </Button>
           )}
           {isAuth && (
