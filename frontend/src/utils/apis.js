@@ -26,3 +26,7 @@ export const getQuizQuestions = () => {
 export const submitQuizAnswers = (answers) => {
   return axios.post(`${API_URL}/quiz/submit`, answers);
 };
+
+export const addQuizQuestion = (questionData) => {
+  return axios.post(`${API_URL}/quiz/questions`, questionData);
+};
